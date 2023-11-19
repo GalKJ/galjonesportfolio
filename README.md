@@ -34,3 +34,65 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+---
+
+# Portfolio Site
+
+This repository contains the code for my personal portfolio site built using React and Next.js. The project includes end-to-end testing using Cypress for Test-Driven Development (TDD).
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+
+## Introduction
+
+This project serves as my personal portfolio site, showcasing my skills, projects, and experience. It's built with React and Next.js to ensure a fast and efficient website. Cypress is used for testing purposes, following the Test-Driven Development (TDD) approach.
+
+## Features
+
+- **React:** Utilizes the React library to create a dynamic user interface.
+- **Next.js:** Employs Next.js for server-side rendering and efficient routing.
+- **Cypress:** Implements Cypress for end-to-end testing, ensuring the robustness of the application.
+- **TDD:** Built using Test-Driven Development practices to maintain code quality and reliability.
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone this repository.
+   ```
+   git clone https://github.com/your-username/portfolio-site.git
+   ```
+2. Navigate to the project directory.
+   ```
+   cd portfolio-site
+   ```
+3. Install the dependencies.
+   ```
+   npm install
+   ```
+
+## Usage
+
+Once the installation is complete, you can start the development server using the following command:
+
+```
+npm run dev
+```
+
+This command will start the development server at `http://localhost:3000`.
+
+## Testing
+
+The project uses Cypress for testing. To run the tests, use the following command:
+
+```
+npm run test
+```
+
+This command will execute the Cypress tests and display the results.
