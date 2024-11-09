@@ -1,0 +1,26 @@
+name: Auto-create feature branch
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create_branch:
+    if: contains(github.event.label.name, 'feature')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create branch
+        run: |
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          ISSUE_TITLE=${{ github.event.issue.title }}
+          BRANCH_NAME="issue-${ISSUE_NUMBER}-${ISSUE_TITLE// /-}"
+          git checkout -b "$BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
