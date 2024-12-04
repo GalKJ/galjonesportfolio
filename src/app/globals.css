@@ -6,6 +6,11 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-light-yellow: 255, 246, 159; /* #fff69f */
+  --color-yellow: 253, 216, 112; /* #fdd870 */
+  --color-orange: 208, 144, 47; /* #d0902f */
+  --color-dark-orange: 161, 85, 1; /* #a15501 */
+  --color-dark-brown: 53, 20, 9; /* #351409 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +18,11 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --color-light-yellow: 255, 246, 159; /* #fff69f */
+    --color-yellow: 253, 216, 112; /* #fdd870 */
+    --color-orange: 208, 144, 47; /* #d0902f */
+    --color-dark-orange: 161, 85, 1; /* #a15501 */
+    --color-dark-brown: 53, 20, 9; /* #351409 */
   }
 }
 
@@ -21,7 +31,7 @@ body {
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(var(--color-dark-brown))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--color-dark-orange));
 }
