@@ -1,6 +1,6 @@
 # Steps to run open-webui locally:
 
-1. open docker and check open-webui container is running
+1. Open docker and check open-webui container is running
 2. open terminal and run the following command
 
 ```bash
