@@ -1,7 +1,7 @@
 # Steps to run open-webui locally:
 
 1. Open docker and check open-webui container is running
-2. open terminal and run the following command
+2. Open terminal and run the following command
 
 ```bash
 ollama serve
