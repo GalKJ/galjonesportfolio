@@ -9,8 +9,8 @@ interface CVEntry {
 const Cv: React.FC = () => {
     const experience: CVEntry[] = [
         {
-            title: "Job Title",
-            date: "2020 - Present",
+            title: "Junior Full Stack Application Developer",
+            date: "2024 - Present",
             description: "Description of responsibilities and achievements"
         },
         // Add more experiences here
