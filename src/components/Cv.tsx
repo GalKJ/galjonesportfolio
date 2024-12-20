@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface CVEntry {
   title: string;
@@ -9,8 +9,8 @@ interface CVEntry {
 const Cv: React.FC = () => {
   const experience: CVEntry[] = [
     {
-      title: "Junior Full-Stack App Developer - Apprentice Software Developer",
-      date: "Citizen Ticket - January 2022 - Present",
+      title: 'Junior Full-Stack App Developer - Apprentice Software Developer',
+      date: 'Citizen Ticket - January 2022 - Present',
       description: `
             • Develop and maintain Citizen Ticket mobile app:
               • React-Native
@@ -48,35 +48,59 @@ const Cv: React.FC = () => {
 
   const education: CVEntry[] = [
     {
-      title: "Degree/Certification",
-      date: "2015 - 2019",
-      description: "Institution name and relevant details",
+      title: 'Degree/Certification',
+      date: '2015 - 2019',
+      description: 'Institution name and relevant details',
     },
     // Add more education entries here
   ];
 
   return (
-    <div className="cv-container">
-      <h1>Curriculum Vitae</h1>
+    <div className="container mx-auto p-4">
+      <div className="text-center mb-8">
+        <p>galkjones@gmail.com - +44(0)7782-382-384</p>
+        <p>
+          <a
+            href="https://linkedin.com/in/galkjones"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline"
+          >
+            linkedin.com/in/galkjones
+          </a>{' '}
+          -{' '}
+          <a
+            href="https://github.com/GalKJ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline"
+          >
+            github.com/GalKJ
+          </a>{' '}
+          - London, UK
+        </p>
+      </div>
 
-      <section className="experience-section">
-        <h2>Professional Experience</h2>
+      <section className="mb-8">
+        <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
         {experience.map((job, index) => (
-          <div key={index} className="cv-entry">
-            <h3>{job.title}</h3>
-            <p className="date">{job.date}</p>
-            <p>{job.description}</p>
+          <div key={index} className="mb-6">
+            <h3 className="text-2xl font-semibold">{job.title}</h3>
+            <p className="text-gray-600">{job.date}</p>
+            <p className="text-gray-800 whitespace-pre-line">
+              {job.description}
+            </p>
           </div>
         ))}
       </section>
 
-      <section className="education-section">
-        <h2>Education</h2>
+      <section>
+        <h2 className="text-3xl font-semibold mb-4">Education</h2>
         {education.map((edu, index) => (
-          <div key={index} className="cv-entry">
-            <h3>{edu.title}</h3>
-            <p className="date">{edu.date}</p>
-            <p>{edu.description}</p>
+          <div key={index} className="mb-6">
+            <h3 className="text-2xl font-semibold">{edu.title}</h3>
+            <p className="text-gray-600">{edu.date}</p>
+            <p className="text-gray-800">{edu.description}</p>
           </div>
         ))}
       </section>
