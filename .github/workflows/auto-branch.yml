@@ -4,13 +4,19 @@ on:
   issues:
     types: [labeled]
 
+permissions:
+  contents: write
+  issues: read
+
 jobs:
   create_branch:
     if: contains(github.event.label.name, 'feature')
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -24,8 +30,17 @@ jobs:
 
       - name: Create branch
         run: |
-          ISSUE_NUMBER=${{ github.event.issue.number }}
-          ISSUE_TITLE=${{ github.event.issue.title }}
-          BRANCH_NAME="issue-${ISSUE_NUMBER}-${ISSUE_TITLE// /-}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          # Sanitize branch name
+          BRANCH_NAME="issue-${ISSUE_NUMBER}-$(echo ${ISSUE_TITLE} | sed 's/[^a-zA-Z0-9-]/-/g' | tr '[:upper:]' '[:lower:]')"
+
+          # Check if branch exists
+          if git show-ref --quiet refs/remotes/origin/$BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME already exists"
+            exit 1
+          fi
+
+          # Create and push branch
           git checkout -b "$BRANCH_NAME"
           git push origin "$BRANCH_NAME"
