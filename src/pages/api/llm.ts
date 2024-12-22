@@ -30,7 +30,13 @@ export default async function handler(
       }
     } catch (error) {
       console.error('Error fetching data from LLM:', error);
-      res.status(500).send(error.message);
+      if (axios.isAxiosError(error)) {
+        res.status(500).send(error.response?.data || error.message);
+      } else if (error instanceof Error) {
+        res.status(500).send(error.message);
+      } else {
+        res.status(500).send('An unknown error occurred');
+      }
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
