@@ -1,111 +1,315 @@
 import React from 'react';
 
-interface CVEntry {
+interface ContactInfo {
+  email: string;
+  phone: string;
+  linkedin: string;
+  github: string;
+  location: string;
+}
+
+interface Experience {
   title: string;
-  date: string;
+  company: string;
+  period: string;
+  responsibilities: {
+    title: string;
+    items: string[];
+  }[];
+}
+
+interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  achievement: string;
+}
+
+interface TechnicalSkill {
+  category: string;
+  skills: string;
+}
+
+interface SideProject {
+  title: string;
+  description: string;
+  technologies: string[];
+}
+
+interface PreviousCareer {
+  role: string;
   description: string;
 }
 
-const Cv: React.FC = () => {
-  const experience: CVEntry[] = [
-    {
-      title: 'Junior Full-Stack App Developer - Apprentice Software Developer',
-      date: 'Citizen Ticket - January 2022 - Present',
-      description: `
-            • Develop and maintain Citizen Ticket mobile app:
-              • React-Native
-              • Redux
-              • Redis
-            
-            • Build, maintain and optimise backend:
-              • Node.js
-              • MySQL
-              • API
-            
-            • Client side app development and debugging:
-              • Android Studio
-              • X-code
-              • Hardware devices
-            
-            • Integrate IDE AI extensions for effective development workflows:
-              • Github Co-pilot
-            
-            • Notable production-level projects:
-              • Checkout refactor
-              • EPOS feature
-              • Offline client feature
-              • Edge server
-            
-            • Delivered daily contributions:
-              • Agile sprint planning
-              • Code reviews
-              • Pair programming
-              • Tech team talks
-            `,
-    },
-    // Add more experiences here
-  ];
+interface CVData {
+  name: string;
+  contactInfo: ContactInfo;
+  profile: {
+    beforeBold: string;
+    boldText: string;
+    afterBold: string;
+  };
+  experience: Experience;
+  technicalSkills: TechnicalSkill[];
+  education: Education[];
+  sideProjects: SideProject[];
+  previousCareers: PreviousCareer[];
+}
 
-  const education: CVEntry[] = [
+const cvData: CVData = {
+  name: 'Gal K Jones',
+  contactInfo: {
+    email: 'galkjones@gmail.com',
+    phone: '+44(0)7782-382-384',
+    linkedin: 'linkedin.com/in/galkjones/',
+    github: 'github.com/GalKJ',
+    location: 'London, UK',
+  },
+  profile: {
+    beforeBold:
+      'Promoted to Junior Full-Stack App Developer at Citizen Ticket after successfully completing an 18-month Level 4 Software Development Apprenticeship with ',
+    boldText: 'distinction-grade',
+    afterBold:
+      '. As sole developer of the App Team I work from conception to deployment, maintain and test the Citizen Ticket mobile application that enables 10,000+ users to scan and sell tickets and manage and sell stock on/offline at their events. Experienced in React-Native, Node.js, MySQL, Redis, Redux, Git and AI tooling. Passionate about DevOps, Agile practices, testing, clean code, pair programming, research and building impactful products.',
+  },
+  experience: {
+    title: 'Junior Full-Stack App Developer - Apprentice Software Developer',
+    company: 'Citizen Ticket',
+    period: 'January 2022 - Present',
+    responsibilities: [
+      {
+        title: 'Develop and maintain Citizen Ticket Toolbox mobile app.',
+        items: ['React-Native', 'Redux', 'Redis'],
+      },
+      {
+        title: 'Build, maintain and optimise backend.',
+        items: ['Node.js', 'MySQL', 'Sales API'],
+      },
+      {
+        title: 'Client side app development and debugging.',
+        items: ['Android Studio', 'X-code', 'Hardware devices'],
+      },
+      {
+        title: 'Deliver contributions to the App and wider development team',
+        items: [
+          'Agile sprint planning',
+          'Code reviews',
+          'Pair programming',
+          'Led technical upskilling sessions',
+        ],
+      },
+      {
+        title: 'Notable production-level projects',
+        items: [
+          'Checkout refactor - worked with onsite event producers',
+          'EPOS feature - worked with platform and account mgmt teams',
+          'Offline client feature - worked with CTO',
+          'Edge server feature',
+        ],
+      },
+    ],
+  },
+  technicalSkills: [
     {
-      title: 'Degree/Certification',
-      date: '2015 - 2019',
-      description: 'Institution name and relevant details',
+      category: 'Languages & Frameworks',
+      skills: 'JavaScript, React-Native, React, Node.js',
     },
-    // Add more education entries here
-  ];
+    {
+      category: 'Tools & Platforms',
+      skills:
+        'Git, Gitlab, Github, Tmux, Nodemon, NPX, Android Studio, Acid-GitLab-MR',
+    },
+    {
+      category: 'Testing',
+      skills: 'Detox (React-Native), Cypress (Web), Jest (Node.js)',
+    },
+    { category: 'Databases', skills: 'MySQL, Redis' },
+    {
+      category: 'AI & Automation',
+      skills:
+        'GitHub Copilot, Local LLM Development, Bash Scripts, GitHub Actions',
+    },
+  ],
+  education: [
+    {
+      degree: 'Level 4 Software Development Apprenticeship',
+      institution: 'Founders and Coders - Placement: Citizen Ticket',
+      period: 'January 2022 - August 2024',
+      achievement: 'Achieved Distinction Grade',
+    },
+    {
+      degree: 'Master of Arts in Acting',
+      institution:
+        'Rose Bruford College, Certified by the University of Manchester',
+      period: 'August 2003 - October 2004',
+      achievement: 'Achieved Distinction Grade',
+    },
+    {
+      degree: 'BTEC in Acting',
+      institution: 'BRIT School of Performing Arts',
+      period: 'August 1997 - August 1999',
+      achievement: 'Achieved Distinction Grade',
+    },
+  ],
+  sideProjects: [
+    {
+      title: 'Local LLM Development',
+      description:
+        'Hosted and fine-tuned a large language model with project and portfolio documentation from apprenticeship.',
+      technologies: ['Raspberry Pi 5', 'Docker', 'Ollama'],
+    },
+  ],
+  previousCareers: [
+    {
+      role: 'Professional Actor',
+      description: 'Devised/ensemble and scripted productions.',
+    },
+    {
+      role: 'Deputy Chief Electrician',
+      description:
+        "Managed technical theatre operations at the Garrick Theatre, London's West End, including show running, programming, rig maintenance, and crew management.",
+    },
+  ],
+};
 
+const CV: React.FC = () => {
   return (
-    <div className="container mx-auto p-4">
-      <div className="text-center mb-8">
-        <p>galkjones@gmail.com - +44(0)7782-382-384</p>
-        <p>
-          <a
-            href="https://linkedin.com/in/galkjones"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
-          >
-            linkedin.com/in/galkjones
-          </a>{' '}
-          -{' '}
-          <a
-            href="https://github.com/GalKJ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
-          >
-            github.com/GalKJ
-          </a>{' '}
-          - London, UK
-        </p>
-      </div>
+    <div className="max-w-4xl mx-auto p-2 space-y-6 font-sans">
+      {/* Header */}
+      <header className="text-center space-y-2">
+        {/* <h1 className="text-2xl font-bold">{cvData.name}</h1> */}
 
-      <section className="mb-8">
-        <h2 className="text-3xl font-semibold mb-4">Professional Experience</h2>
-        {experience.map((job, index) => (
-          <div key={index} className="mb-6">
-            <h3 className="text-2xl font-semibold">{job.title}</h3>
-            <p className="text-gray-600">{job.date}</p>
-            <p className="text-gray-800 whitespace-pre-line">
-              {job.description}
-            </p>
-          </div>
-        ))}
+        <div className="flex flex-wrap justify-center gap-2 text-sm">
+          <a
+            href={`mailto:${cvData.contactInfo.email}`}
+            className="underline text-blue-600 hover:text-blue-800"
+          >
+            {cvData.contactInfo.email}
+          </a>
+          <span>-</span>
+          <span>{cvData.contactInfo.phone}</span>
+          <span>-</span>
+          <a
+            href={`https://www.${cvData.contactInfo.linkedin}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-600 hover:text-blue-800"
+          >
+            {cvData.contactInfo.linkedin}
+          </a>
+          <span>-</span>
+          <a
+            href={`https://${cvData.contactInfo.github}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-600 hover:text-blue-800"
+          >
+            {cvData.contactInfo.github}
+          </a>
+          <span>-</span>
+          <span>{cvData.contactInfo.location}</span>
+        </div>
+      </header>
+
+      {/* Profile Section */}
+      <section>
+        <h2 className="text-xl font-bold mb-2">Profile</h2>
+        <p className="text-justify">
+          {cvData.profile.beforeBold}
+          <span className="font-bold">{cvData.profile.boldText}</span>
+          {cvData.profile.afterBold}
+        </p>
       </section>
 
+      {/* Professional Experience */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">Education</h2>
-        {education.map((edu, index) => (
-          <div key={index} className="mb-6">
-            <h3 className="text-2xl font-semibold">{edu.title}</h3>
-            <p className="text-gray-600">{edu.date}</p>
-            <p className="text-gray-800">{edu.description}</p>
+        <h2 className="text-xl font-bold mb-4">Professional Experience</h2>
+        <div className="space-y-2">
+          <h3 className="text-lg font-bold">{cvData.experience.title}</h3>
+          <h4 className="text-base italic">
+            {cvData.experience.company} — {cvData.experience.period}
+          </h4>
+
+          <div className="space-y-4 mt-2">
+            {cvData.experience.responsibilities.map((resp, index) => (
+              <div key={index}>
+                <p className="font-bold mb-1">{resp.title}</p>
+                <ul className="list-disc ml-8">
+                  {resp.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+      </section>
+
+      {/* Technical Skills */}
+      <section>
+        <h2 className="text-xl font-bold mb-2">Technical Skills</h2>
+        <ul className="space-y-1">
+          {cvData.technicalSkills.map((skill, index) => (
+            <li key={index}>
+              <span className="font-bold">{skill.category}:</span>{' '}
+              {skill.skills}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Education */}
+      <section>
+        <h2 className="text-xl font-bold mb-4">Education</h2>
+        <div className="space-y-6">
+          {cvData.education.map((edu, index) => (
+            <div key={index}>
+              <h3 className="text-lg font-bold">{edu.degree}</h3>
+              <h4 className="text-base italic">
+                {edu.institution} - {edu.period}
+              </h4>
+              <p className="font-bold mt-1">{edu.achievement}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Additional Information */}
+      <section>
+        <h2 className="text-xl font-bold mb-4">Additional Information</h2>
+
+        {/* Side Projects */}
+        <div className="mb-6">
+          <h3 className="text-lg font-bold">Side Projects</h3>
+          {cvData.sideProjects.map((project, index) => (
+            <div key={index} className="mt-2">
+              <p className="font-bold">
+                {project.title}: {project.description}
+              </p>
+              <ul className="list-disc ml-8 mt-1">
+                {project.technologies.map((tech, techIndex) => (
+                  <li key={techIndex}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Previous Careers */}
+        <div>
+          <h3 className="text-lg font-bold">Previous careers</h3>
+          <ul className="list-disc ml-8 mt-2">
+            {cvData.previousCareers.map((career, index) => (
+              <li key={index}>
+                <span className="font-bold">{career.role}:</span>{' '}
+                {career.description}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );
 };
 
-export default Cv;
+export default CV;
