@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
-const hardcodedResponseTest = false; // Set to false to forward requests
+const hardcodedResponseTest = true; // Set to false to forward requests
 const apiKey = process.env.OPEN_WEBUI_API_KEY;
 
 export default async function handler(
