@@ -177,8 +177,6 @@ const CV: React.FC = () => {
     <div className="max-w-4xl mx-auto p-2 space-y-6 font-sans">
       {/* Header */}
       <header className="text-center space-y-2">
-        {/* <h1 className="text-2xl font-bold">{cvData.name}</h1> */}
-
         <div className="flex flex-wrap justify-center gap-2 text-sm">
           <a
             href={`mailto:${cvData.contactInfo.email}`}
