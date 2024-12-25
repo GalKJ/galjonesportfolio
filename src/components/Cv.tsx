@@ -174,19 +174,23 @@ const cvData: CVData = {
 
 const CV: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto p-2 space-y-6 font-sans">
+    <div className="w-full space-y-4 md:space-y-6 lg:space-y-8">
       {/* Header */}
       <header className="text-center space-y-2">
-        <div className="flex flex-wrap justify-center gap-2 text-sm">
+
+        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-2 text-sm">
+
           <a
             href={`mailto:${cvData.contactInfo.email}`}
             className="underline text-blue-600 hover:text-blue-800"
           >
             {cvData.contactInfo.email}
           </a>
-          <span className="dark:text-yellow">-</span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
           <span className="dark:text-yellow">{cvData.contactInfo.phone}</span>
-          <span className="dark:text-yellow">-</span>
+          <span className="hidden md:inline dark:text-yellow">-</span>
+
           <a
             href={`https://www.${cvData.contactInfo.linkedin}`}
             target="_blank"
@@ -195,7 +199,9 @@ const CV: React.FC = () => {
           >
             {cvData.contactInfo.linkedin}
           </a>
-          <span className="dark:text-yellow">-</span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
+
           <a
             href={`https://${cvData.contactInfo.github}`}
             target="_blank"
@@ -204,19 +210,19 @@ const CV: React.FC = () => {
           >
             {cvData.contactInfo.github}
           </a>
-          <span className="dark:text-yellow">-</span>
-          <span className="dark:text-yellow">
-            {cvData.contactInfo.location}
-          </span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
+          <span className="dark:text-yellow">{cvData.contactInfo.location}</span>
+
         </div>
       </header>
 
       {/* Profile Section */}
-      <section>
-        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">
-          Profile
-        </h2>
+
+      <section className="px-3 md:px-2 lg:px-0.5">
+        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">Profile</h2>
         <p className="text-justify dark:text-yellow">
+
           {cvData.profile.beforeBold}
           <span className="font-bold dark:text-lightYellow">
             {cvData.profile.boldText}
@@ -226,10 +232,10 @@ const CV: React.FC = () => {
       </section>
 
       {/* Professional Experience */}
-      <section>
-        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">
-          Professional Experience
-        </h2>
+
+      <section className="px-3 md:px-2 lg:px-0.5">
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Professional Experience</h2>
+
         <div className="space-y-2">
           <h3 className="text-lg font-bold dark:text-yellow">
             {cvData.experience.title}
@@ -254,11 +260,11 @@ const CV: React.FC = () => {
       </section>
 
       {/* Technical Skills */}
-      <section>
-        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">
-          Technical Skills
-        </h2>
+
+      <section className="px-3 md:px-2 lg:px-0.5">
+        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">Technical Skills</h2>
         <ul className="space-y-1 dark:text-yellow">
+
           {cvData.technicalSkills.map((skill, index) => (
             <li key={index}>
               <span className="font-bold dark:text-yellow">
@@ -271,10 +277,10 @@ const CV: React.FC = () => {
       </section>
 
       {/* Education */}
-      <section>
-        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">
-          Education
-        </h2>
+
+      <section className="px-3 md:px-2 lg:px-0.5">
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Education</h2>
+
         <div className="space-y-6">
           {cvData.education.map((edu, index) => (
             <div key={index}>
@@ -293,10 +299,10 @@ const CV: React.FC = () => {
       </section>
 
       {/* Additional Information */}
-      <section>
-        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">
-          Additional Information
-        </h2>
+
+      <section className="px-3 md:px-2 lg:px-0.5">
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Additional Information</h2>
+
 
         {/* Side Projects */}
         <div className="mb-6">
