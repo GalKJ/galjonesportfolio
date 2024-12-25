@@ -177,16 +177,20 @@ const CV: React.FC = () => {
     <div className="w-full space-y-4 md:space-y-6 lg:space-y-8">
       {/* Header */}
       <header className="text-center space-y-2">
+
         <div className="flex flex-col md:flex-row flex-wrap justify-center gap-2 text-sm">
+
           <a
             href={`mailto:${cvData.contactInfo.email}`}
             className="underline text-blue-600 hover:text-blue-800"
           >
             {cvData.contactInfo.email}
           </a>
-          <span className="hidden md:inline">-</span>
-          <span>{cvData.contactInfo.phone}</span>
-          <span className="hidden md:inline">-</span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
+          <span className="dark:text-yellow">{cvData.contactInfo.phone}</span>
+          <span className="hidden md:inline dark:text-yellow">-</span>
+
           <a
             href={`https://www.${cvData.contactInfo.linkedin}`}
             target="_blank"
@@ -195,7 +199,9 @@ const CV: React.FC = () => {
           >
             {cvData.contactInfo.linkedin}
           </a>
-          <span className="hidden md:inline">-</span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
+
           <a
             href={`https://${cvData.contactInfo.github}`}
             target="_blank"
@@ -204,35 +210,45 @@ const CV: React.FC = () => {
           >
             {cvData.contactInfo.github}
           </a>
-          <span className="hidden md:inline">-</span>
-          <span>{cvData.contactInfo.location}</span>
+
+          <span className="hidden md:inline dark:text-yellow">-</span>
+          <span className="dark:text-yellow">{cvData.contactInfo.location}</span>
+
         </div>
       </header>
 
       {/* Profile Section */}
+
       <section className="px-3 md:px-2 lg:px-0.5">
-        <h2 className="text-xl font-bold mb-2">Profile</h2>
-        <p className="text-justify">
+        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">Profile</h2>
+        <p className="text-justify dark:text-yellow">
+
           {cvData.profile.beforeBold}
-          <span className="font-bold">{cvData.profile.boldText}</span>
+          <span className="font-bold dark:text-lightYellow">
+            {cvData.profile.boldText}
+          </span>
           {cvData.profile.afterBold}
         </p>
       </section>
 
       {/* Professional Experience */}
+
       <section className="px-3 md:px-2 lg:px-0.5">
-        <h2 className="text-xl font-bold mb-4">Professional Experience</h2>
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Professional Experience</h2>
+
         <div className="space-y-2">
-          <h3 className="text-lg font-bold">{cvData.experience.title}</h3>
-          <h4 className="text-base italic">
+          <h3 className="text-lg font-bold dark:text-yellow">
+            {cvData.experience.title}
+          </h3>
+          <h4 className="text-base italic dark:text-yellow">
             {cvData.experience.company} — {cvData.experience.period}
           </h4>
 
           <div className="space-y-4 mt-2">
             {cvData.experience.responsibilities.map((resp, index) => (
               <div key={index}>
-                <p className="font-bold mb-1">{resp.title}</p>
-                <ul className="list-disc ml-8">
+                <p className="font-bold mb-1 dark:text-yellow">{resp.title}</p>
+                <ul className="list-disc ml-8 dark:text-yellow">
                   {resp.items.map((item, itemIndex) => (
                     <li key={itemIndex}>{item}</li>
                   ))}
@@ -244,12 +260,16 @@ const CV: React.FC = () => {
       </section>
 
       {/* Technical Skills */}
+
       <section className="px-3 md:px-2 lg:px-0.5">
-        <h2 className="text-xl font-bold mb-2">Technical Skills</h2>
-        <ul className="space-y-1">
+        <h2 className="text-xl font-bold mb-2 dark:text-lightYellow">Technical Skills</h2>
+        <ul className="space-y-1 dark:text-yellow">
+
           {cvData.technicalSkills.map((skill, index) => (
             <li key={index}>
-              <span className="font-bold">{skill.category}:</span>{' '}
+              <span className="font-bold dark:text-yellow">
+                {skill.category}:
+              </span>{' '}
               {skill.skills}
             </li>
           ))}
@@ -257,34 +277,42 @@ const CV: React.FC = () => {
       </section>
 
       {/* Education */}
+
       <section className="px-3 md:px-2 lg:px-0.5">
-        <h2 className="text-xl font-bold mb-4">Education</h2>
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Education</h2>
+
         <div className="space-y-6">
           {cvData.education.map((edu, index) => (
             <div key={index}>
-              <h3 className="text-lg font-bold">{edu.degree}</h3>
-              <h4 className="text-base italic">
+              <h3 className="text-lg font-bold dark:text-yellow">
+                {edu.degree}
+              </h3>
+              <h4 className="text-base italic dark:text-yellow">
                 {edu.institution} - {edu.period}
               </h4>
-              <p className="font-bold mt-1">{edu.achievement}</p>
+              <p className="font-bold mt-1 dark:text-yellow">
+                {edu.achievement}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Additional Information */}
+
       <section className="px-3 md:px-2 lg:px-0.5">
-        <h2 className="text-xl font-bold mb-4">Additional Information</h2>
+        <h2 className="text-xl font-bold mb-4 dark:text-lightYellow">Additional Information</h2>
+
 
         {/* Side Projects */}
         <div className="mb-6">
-          <h3 className="text-lg font-bold">Side Projects</h3>
+          <h3 className="text-lg font-bold dark:text-yellow">Side Projects</h3>
           {cvData.sideProjects.map((project, index) => (
             <div key={index} className="mt-2">
-              <p className="font-bold">
+              <p className="font-bold dark:text-yellow">
                 {project.title}: {project.description}
               </p>
-              <ul className="list-disc ml-8 mt-1">
+              <ul className="list-disc ml-8 mt-1 dark:text-yellow">
                 {project.technologies.map((tech, techIndex) => (
                   <li key={techIndex}>{tech}</li>
                 ))}
@@ -295,11 +323,15 @@ const CV: React.FC = () => {
 
         {/* Previous Careers */}
         <div>
-          <h3 className="text-lg font-bold">Previous careers</h3>
-          <ul className="list-disc ml-8 mt-2">
+          <h3 className="text-lg font-bold dark:text-yellow">
+            Previous careers
+          </h3>
+          <ul className="list-disc ml-8 mt-2 dark:text-yellow">
             {cvData.previousCareers.map((career, index) => (
               <li key={index}>
-                <span className="font-bold">{career.role}:</span>{' '}
+                <span className="font-bold dark:text-yellow">
+                  {career.role}:
+                </span>{' '}
                 {career.description}
               </li>
             ))}
