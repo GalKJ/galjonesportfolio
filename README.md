@@ -89,10 +89,25 @@ This command will start the development server at `http://localhost:3000`.
 
 ## Testing
 
-The project uses Cypress for testing. To run the tests, use the following command:
+The project uses Cypress for testing. To run the tests, use the following commands:
+
+Open Cypress Test Runner (Interactive Mode):
 
 ```
-npm run test
+npm run cy:open
+# or
+npx cypress open
 ```
 
-This command will execute the Cypress tests and display the results.
+Run Cypress Tests (Headless Mode):
+
+```
+# Run all component tests
+npx cypress run --component
+
+# Run specific test file
+npx cypress run --component --spec "cypress/component/PortfolioHeader.cy.tsx"
+
+# Run in a specific browser
+npx cypress run --component --browser chrome
+```
