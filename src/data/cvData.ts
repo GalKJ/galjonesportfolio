@@ -1,6 +1,5 @@
 export interface ContactInfo {
   email: string;
-  phone: string;
   linkedin: string;
   github: string;
   location: string;
@@ -60,7 +59,6 @@ export const cvData: CVData = {
   name: 'Gal K Jones',
   contactInfo: {
     email: 'galkjones@gmail.com',
-    phone: '+44(0)7782-382-384',
     linkedin: 'linkedin.com/in/galkjones/',
     github: 'github.com/GalKJ',
     location: 'London, UK',
