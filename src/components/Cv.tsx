@@ -15,8 +15,6 @@ const CV: React.FC = () => {
           </a>
 
           <span className="hidden md:inline dark:text-yellow">-</span>
-          <span className="dark:text-yellow">{cvData.contactInfo.phone}</span>
-          <span className="hidden md:inline dark:text-yellow">-</span>
 
           <a
             href={`https://www.${cvData.contactInfo.linkedin}`}

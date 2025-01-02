@@ -9,7 +9,6 @@ describe('Cv Component', () => {
 
   it('displays contact info', () => {
     cy.contains(cvData.contactInfo.email).should('exist');
-    cy.contains(cvData.contactInfo.phone).should('exist');
     cy.contains(cvData.contactInfo.linkedin).should('exist');
     cy.contains(cvData.contactInfo.github).should('exist');
     cy.contains(cvData.contactInfo.location).should('exist');
