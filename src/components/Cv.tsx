@@ -1,7 +1,224 @@
+'use client';
+
 import React from 'react';
 import { cvData } from '../data/cvData';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const CV: React.FC = () => {
+  const generatePdf = () => {
+    const doc = new jsPDF();
+    let yOffset = 20; // Starting position
+    const margin = 10;
+    const pageWidth = doc.internal.pageSize.width;
+
+    // Helper function to add spacing
+    const addSpacing = (points: number) => {
+      yOffset += points;
+    };
+
+    // Helper function for centered text
+    const addCenteredText = (text: string, fontSize: number) => {
+      doc.setFontSize(fontSize);
+      const textWidth = doc.getTextWidth(text);
+      doc.text(text, (pageWidth - textWidth) / 2, yOffset);
+      addSpacing(fontSize / 2);
+    };
+
+    // Helper function to add clickable links
+    const addLink = (text: string, url: string, x: number, y: number) => {
+      doc.setTextColor(0, 0, 255); // Blue color for links
+      doc.textWithLink(text, x, y, { url });
+      doc.setTextColor(0, 0, 0); // Reset to black
+    };
+
+    // Header with name
+    addCenteredText(cvData.name, 24);
+    addSpacing(5);
+
+    // Define padding between contact items
+    const PADDING = 10;
+
+    // Contact information in one line
+    const contactInfo = [
+      // { text: cvData.contactInfo.portfolio, url: cvData.contactInfo.portfolio },
+      {
+        text: cvData.contactInfo.email,
+        url: `mailto:${cvData.contactInfo.email}`,
+      },
+      // {
+      //   text: cvData.contactInfo.phone,
+      //   url: `tel:${cvData.contactInfo.phone}`,
+      // },
+      {
+        text: 'linkedin.com/in/galkjones/',
+        url: 'https://www.linkedin.com/in/galkjones/',
+      },
+      {
+        text: 'github.com/GalKJ',
+        url: 'https://github.com/GalKJ/galjonesportfolio',
+      },
+      { text: cvData.contactInfo.location },
+    ];
+
+    // Calculate positions for centered contact info
+
+    const totalWidth = contactInfo.reduce(
+      (acc, info) =>
+        acc + (info.text ? doc.getTextWidth(info.text) + PADDING : 0),
+      0
+    );
+    let currentX = (pageWidth - totalWidth) / 2;
+
+    doc.setFontSize(10);
+    contactInfo.forEach((info) => {
+      if (info.text) {
+        if (info.url) {
+          addLink(info.text, info.url, currentX, yOffset);
+        } else {
+          doc.text(String(info.text), currentX, yOffset);
+        }
+        currentX += doc.getTextWidth(info.text) + PADDING;
+      }
+    });
+
+    addSpacing(20);
+
+    // Profile Section
+    doc.setFontSize(16);
+    doc.text('Profile', margin, yOffset);
+    addSpacing(10);
+
+    doc.setFontSize(12);
+    const splitProfile = doc.splitTextToSize(
+      `${cvData.profile.beforeBold} ${cvData.profile.boldText} ${cvData.profile.afterBold}`,
+      pageWidth - margin * 2
+    );
+    doc.text(splitProfile, margin, yOffset);
+    addSpacing(splitProfile.length * 7);
+
+    // Experience Section
+    doc.setFontSize(16);
+    doc.text('Professional Experience', margin, yOffset);
+    addSpacing(10);
+
+    cvData.experience.forEach((exp) => {
+      doc.setFontSize(14);
+      doc.text(`${exp.title} - ${exp.company}`, margin, yOffset);
+      addSpacing(7);
+
+      doc.setFontSize(12);
+      doc.text(`${exp.period}`, margin, yOffset);
+      addSpacing(7);
+
+      exp.responsibilities.forEach((resp) => {
+        doc.text(`• ${resp.title}`, margin + 5, yOffset);
+        addSpacing(7);
+
+        resp.items.forEach((item) => {
+          doc.text(`  - ${item}`, margin + 10, yOffset);
+          addSpacing(7);
+        });
+      });
+      addSpacing(5);
+    });
+
+    // Technical Skills Section
+    doc.setFontSize(16);
+    doc.text('Technical Skills', margin, yOffset);
+    addSpacing(10);
+
+    cvData.technicalSkills.forEach((skill) => {
+      doc.setFontSize(12);
+      const skillText = `${skill.category}: ${skill.skills}`;
+      const splitSkills = doc.splitTextToSize(
+        skillText,
+        pageWidth - margin * 2
+      );
+      doc.text(splitSkills, margin, yOffset);
+      addSpacing(splitSkills.length * 7);
+    });
+
+    // Education Section
+    doc.setFontSize(16);
+    doc.text('Education', margin, yOffset);
+    addSpacing(10);
+
+    cvData.education.forEach((edu) => {
+      doc.setFontSize(14);
+      doc.text(`${edu.degree}`, margin, yOffset);
+      addSpacing(7);
+
+      doc.setFontSize(12);
+      doc.text(`${edu.institution} - ${edu.period}`, margin, yOffset);
+      addSpacing(7);
+      doc.text(`${edu.achievement}`, margin + 5, yOffset);
+      addSpacing(10);
+    });
+
+    // Side Projects Section
+    if (cvData.sideProjects && cvData.sideProjects.length > 0) {
+      doc.setFontSize(16);
+      doc.text('Side Projects', margin, yOffset);
+      addSpacing(10);
+
+      cvData.sideProjects.forEach((project) => {
+        doc.setFontSize(14);
+        doc.text(project.title, margin, yOffset);
+        addSpacing(7);
+
+        doc.setFontSize(12);
+        const descriptionLines = doc.splitTextToSize(
+          project.description,
+          pageWidth - margin * 2
+        );
+        doc.text(descriptionLines, margin, yOffset);
+        addSpacing(descriptionLines.length * 7);
+
+        if (project.technologies) {
+          doc.text(
+            `Technologies: ${project.technologies.join(', ')}`,
+            margin,
+            yOffset
+          );
+          addSpacing(10);
+        }
+      });
+    }
+
+    // Previous Careers Section
+    if (cvData.previousCareers && cvData.previousCareers.length > 0) {
+      doc.setFontSize(16);
+      doc.text('Previous Careers', margin, yOffset);
+      addSpacing(10);
+
+      cvData.previousCareers.forEach((career) => {
+        doc.setFontSize(14);
+        doc.text(career.role, margin, yOffset);
+        addSpacing(7);
+
+        doc.setFontSize(12);
+        const descriptionLines = doc.splitTextToSize(
+          career.description,
+          pageWidth - margin * 2
+        );
+        doc.text(descriptionLines, margin, yOffset);
+        addSpacing(descriptionLines.length * 7);
+      });
+    }
+
+    // Auto page break handling
+    doc.setProperties({
+      title: `${cvData.name} - CV`,
+      subject: 'Curriculum Vitae',
+      author: cvData.name,
+      keywords: 'CV, Resume, Software Developer',
+      creator: 'CV Generator',
+    });
+
+    doc.save('CV.pdf');
+  };
+
   return (
     <div className="w-full space-y-4 md:space-y-6 lg:space-y-8">
       {/* Header */}
@@ -75,31 +292,37 @@ const CV: React.FC = () => {
         </h2>
 
         <div className="space-y-2">
-          <h3
-            className="text-lg font-bold dark:text-yellow"
-            data-testid="experience-title"
-          >
-            {cvData.experience.title}
-          </h3>
-          <h4
-            className="text-base italic dark:text-yellow"
-            data-testid="experience-company-period"
-          >
-            {cvData.experience.company} — {cvData.experience.period}
-          </h4>
+          {cvData.experience.map((exp, index) => (
+            <div key={index}>
+              <h3
+                className="text-lg font-bold dark:text-yellow"
+                data-testid="experience-title"
+              >
+                {exp.title} at {exp.company}
+              </h3>
+              <h4
+                className="text-base italic dark:text-yellow"
+                data-testid="experience-company-period"
+              >
+                {exp.period}
+              </h4>
 
-          <div className="space-y-4 mt-2">
-            {cvData.experience.responsibilities.map((resp, index) => (
-              <div key={index}>
-                <p className="font-bold mb-1 dark:text-yellow">{resp.title}</p>
-                <ul className="list-disc ml-8 dark:text-yellow">
-                  {resp.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>{item}</li>
-                  ))}
-                </ul>
+              <div className="space-y-4 mt-2">
+                {exp.responsibilities.map((resp, respIndex) => (
+                  <div key={respIndex}>
+                    <p className="font-bold mb-1 dark:text-yellow">
+                      {resp.title}
+                    </p>
+                    <ul className="list-disc ml-8 dark:text-yellow">
+                      {resp.items.map((item, itemIndex) => (
+                        <li key={itemIndex}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -218,6 +441,14 @@ const CV: React.FC = () => {
           </ul>
         </div>
       </section>
+
+      {/* Download PDF Button */}
+      <button
+        onClick={generatePdf}
+        className="px-4 py-2 bg-blue-600 text-white rounded"
+      >
+        Download PDF
+      </button>
     </div>
   );
 };
