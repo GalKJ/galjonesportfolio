@@ -22,7 +22,7 @@ const CV: React.FC = () => {
       doc.setFontSize(fontSize);
       const textWidth = doc.getTextWidth(text);
       doc.text(text, (pageWidth - textWidth) / 2, yOffset);
-      addSpacing(fontSize / 2);
+      addSpacing(fontSize / 3);
     };
 
     // Helper function to add clickable links
@@ -89,7 +89,7 @@ const CV: React.FC = () => {
       }
     });
 
-    addSpacing(20);
+    addSpacing(10);
 
     // Profile Section
     doc.setFontSize(16);
