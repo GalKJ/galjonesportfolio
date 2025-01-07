@@ -36,20 +36,12 @@ const CV: React.FC = () => {
     addCenteredText(cvData.name, 24);
     addSpacing(5);
 
-    // Define padding between contact items
-    const PADDING = 10;
-
-    // Contact information in one line
+    // Fixed contact info alignment
     const contactInfo = [
-      // { text: cvData.contactInfo.portfolio, url: cvData.contactInfo.portfolio },
       {
         text: cvData.contactInfo.email,
         url: `mailto:${cvData.contactInfo.email}`,
       },
-      // {
-      //   text: cvData.contactInfo.phone,
-      //   url: `tel:${cvData.contactInfo.phone}`,
-      // },
       {
         text: 'linkedin.com/in/galkjones/',
         url: 'https://www.linkedin.com/in/galkjones/',
@@ -61,24 +53,35 @@ const CV: React.FC = () => {
       { text: cvData.contactInfo.location },
     ];
 
-    // Calculate positions for centered contact info
+    doc.setFontSize(10);
 
-    const totalWidth = contactInfo.reduce(
-      (acc, info) =>
-        acc + (info.text ? doc.getTextWidth(info.text) + PADDING : 0),
-      0
-    );
+    // Calculate total width including separators
+    const separator = ' - ';
+    const separatorWidth = doc.getTextWidth(separator);
+    const totalWidth = contactInfo.reduce((acc, info, index) => {
+      const itemWidth = doc.getTextWidth(info.text);
+      // Add separator width for all items except the last
+      return (
+        acc + itemWidth + (index < contactInfo.length - 1 ? separatorWidth : 0)
+      );
+    }, 0);
+
+    // Start position for centered alignment
     let currentX = (pageWidth - totalWidth) / 2;
 
-    doc.setFontSize(10);
-    contactInfo.forEach((info) => {
-      if (info.text) {
-        if (info.url) {
-          addLink(info.text, info.url, currentX, yOffset);
-        } else {
-          doc.text(String(info.text), currentX, yOffset);
-        }
-        currentX += doc.getTextWidth(info.text) + PADDING;
+    // Render contact info with separators
+    contactInfo.forEach((info, index) => {
+      if (info.url) {
+        addLink(info.text, info.url, currentX, yOffset);
+      } else {
+        doc.text(info.text, currentX, yOffset);
+      }
+      currentX += doc.getTextWidth(info.text);
+
+      // Add separator after all items except the last
+      if (index < contactInfo.length - 1) {
+        doc.text(separator, currentX, yOffset);
+        currentX += separatorWidth;
       }
     });
 
