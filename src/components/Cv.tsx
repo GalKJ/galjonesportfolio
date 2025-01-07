@@ -28,13 +28,17 @@ const CV: React.FC = () => {
     // Helper function to add clickable links
     const addLink = (text: string, url: string, x: number, y: number) => {
       doc.setTextColor(0, 0, 255); // Blue color for links
+      const textWidth = doc.getTextWidth(text);
       doc.textWithLink(text, x, y, { url });
-      doc.setTextColor(0, 0, 0); // Reset to black
+      // Underline the text
+      doc.setDrawColor(0, 0, 255); // Set draw color to blue
+      doc.line(x, y + 1, x + textWidth, y + 1); // Adjust y as needed for proper positioning
+      doc.setDrawColor(0, 0, 0); // Reset draw color to black
+      doc.setTextColor(0, 0, 0); // Reset text color to black
     };
 
     // Header with name
     addCenteredText(cvData.name, 24);
-    addSpacing(5);
 
     // Fixed contact info alignment
     const contactInfo = [
