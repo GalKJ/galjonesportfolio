@@ -99,7 +99,7 @@ const CV: React.FC = () => {
         }
       });
 
-      addSpacing(10);
+      addSpacing(12);
     };
 
     // Header with name
@@ -108,25 +108,25 @@ const CV: React.FC = () => {
     // Profile Section
     doc.setFontSize(16);
     doc.text('Profile', margin, yOffset);
-    addSpacing(10);
+    addSpacing(9);
 
     doc.setFontSize(12);
     const splitProfile = doc.splitTextToSize(
-      `${cvData.profile.beforeBold} ${cvData.profile.boldText} ${cvData.profile.afterBold}`,
+      `${cvData.profile.beforeBold}${cvData.profile.boldText}${cvData.profile.afterBold}`,
       pageWidth - margin * 2
     );
     doc.text(splitProfile, margin, yOffset);
-    addSpacing(splitProfile.length * 7);
+    addSpacing(splitProfile.length * 6);
 
     // Experience Section
     doc.setFontSize(16);
     doc.text('Professional Experience', margin, yOffset);
-    addSpacing(10);
+    addSpacing(9);
 
     cvData.experience.forEach((exp) => {
       doc.setFontSize(14);
       doc.text(`${exp.title} - ${exp.company}`, margin, yOffset);
-      addSpacing(7);
+      addSpacing(8);
 
       doc.setFontSize(12);
       doc.text(`${exp.period}`, margin, yOffset);
@@ -147,7 +147,7 @@ const CV: React.FC = () => {
     // Technical Skills Section
     doc.setFontSize(16);
     doc.text('Technical Skills', margin, yOffset);
-    addSpacing(10);
+    addSpacing(9);
 
     cvData.technicalSkills.forEach((skill) => {
       doc.setFontSize(12);
@@ -159,11 +159,12 @@ const CV: React.FC = () => {
       doc.text(splitSkills, margin, yOffset);
       addSpacing(splitSkills.length * 7);
     });
+    addSpacing(5);
 
     // Education Section
     doc.setFontSize(16);
     doc.text('Education', margin, yOffset);
-    addSpacing(10);
+    addSpacing(9);
 
     cvData.education.forEach((edu) => {
       doc.setFontSize(14);
@@ -181,7 +182,7 @@ const CV: React.FC = () => {
     if (cvData.sideProjects && cvData.sideProjects.length > 0) {
       doc.setFontSize(16);
       doc.text('Side Projects', margin, yOffset);
-      addSpacing(10);
+      addSpacing(9);
 
       cvData.sideProjects.forEach((project) => {
         doc.setFontSize(14);
@@ -211,7 +212,7 @@ const CV: React.FC = () => {
     if (cvData.previousCareers && cvData.previousCareers.length > 0) {
       doc.setFontSize(16);
       doc.text('Previous Careers', margin, yOffset);
-      addSpacing(10);
+      addSpacing(9);
 
       cvData.previousCareers.forEach((career) => {
         doc.setFontSize(14);
