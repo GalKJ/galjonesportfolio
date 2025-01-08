@@ -11,10 +11,17 @@ const CV: React.FC = () => {
     let yOffset = 20; // Starting position
     const margin = 10;
     const pageWidth = doc.internal.pageSize.width;
+    const pageHeight = doc.internal.pageSize.height; // Define page height
 
     // Helper function to add spacing
     const addSpacing = (points: number) => {
       yOffset += points;
+      if (yOffset > pageHeight - margin) {
+        // Check if yOffset exceeds page height
+        doc.addPage(); // Add a new page
+        yOffset = margin; // Reset yOffset
+        addHeader(); // Re-add header on new page
+      }
     };
 
     // Helper function for centered text
@@ -22,7 +29,13 @@ const CV: React.FC = () => {
       doc.setFontSize(fontSize);
       const textWidth = doc.getTextWidth(text);
       doc.text(text, (pageWidth - textWidth) / 2, yOffset);
-      addSpacing(fontSize / 3);
+      addSpacing(fontSize / 3); // Decreased spacing
+    };
+
+    // Helper function to add header
+    const addHeader = () => {
+      addCenteredText(cvData.name, 24);
+      // Optionally, re-add contact info or other header elements here
     };
 
     // Helper function to add clickable links
@@ -38,7 +51,7 @@ const CV: React.FC = () => {
     };
 
     // Header with name
-    addCenteredText(cvData.name, 24);
+    addHeader(); // Initialize header
 
     // Fixed contact info alignment
     const contactInfo = [
