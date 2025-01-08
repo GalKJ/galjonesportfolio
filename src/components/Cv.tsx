@@ -19,7 +19,7 @@ const CV: React.FC = () => {
       if (yOffset > pageHeight - margin) {
         // Check if yOffset exceeds page height
         doc.addPage(); // Add a new page
-        yOffset = margin; // Reset yOffset
+        yOffset = 20; // Reset yOffset
         addHeader(); // Re-add header on new page
       }
     };
@@ -30,12 +30,6 @@ const CV: React.FC = () => {
       const textWidth = doc.getTextWidth(text);
       doc.text(text, (pageWidth - textWidth) / 2, yOffset);
       addSpacing(fontSize / 3); // Decreased spacing
-    };
-
-    // Helper function to add header
-    const addHeader = () => {
-      addCenteredText(cvData.name, 24);
-      // Optionally, re-add contact info or other header elements here
     };
 
     // Helper function to add clickable links
@@ -50,59 +44,66 @@ const CV: React.FC = () => {
       doc.setTextColor(0, 0, 0); // Reset text color to black
     };
 
+    // Helper function to add header
+    const addHeader = () => {
+      addCenteredText(cvData.name, 24);
+      // Optionally, re-add contact info or other header elements here
+      // Fixed contact info alignment
+      const contactInfo = [
+        {
+          text: cvData.contactInfo.email,
+          url: `mailto:${cvData.contactInfo.email}`,
+        },
+        {
+          text: 'linkedin.com/in/galkjones/',
+          url: 'https://www.linkedin.com/in/galkjones/',
+        },
+        {
+          text: 'github.com/GalKJ',
+          url: 'https://github.com/GalKJ/galjonesportfolio',
+        },
+        { text: cvData.contactInfo.location },
+      ];
+
+      doc.setFontSize(10);
+
+      // Calculate total width including separators
+      const separator = ' - ';
+      const separatorWidth = doc.getTextWidth(separator);
+      const totalWidth = contactInfo.reduce((acc, info, index) => {
+        const itemWidth = doc.getTextWidth(info.text);
+        // Add separator width for all items except the last
+        return (
+          acc +
+          itemWidth +
+          (index < contactInfo.length - 1 ? separatorWidth : 0)
+        );
+      }, 0);
+
+      // Start position for centered alignment
+      let currentX = (pageWidth - totalWidth) / 2;
+
+      // Render contact info with separators
+      contactInfo.forEach((info, index) => {
+        if (info.url) {
+          addLink(info.text, info.url, currentX, yOffset);
+        } else {
+          doc.text(info.text, currentX, yOffset);
+        }
+        currentX += doc.getTextWidth(info.text);
+
+        // Add separator after all items except the last
+        if (index < contactInfo.length - 1) {
+          doc.text(separator, currentX, yOffset);
+          currentX += separatorWidth;
+        }
+      });
+
+      addSpacing(10);
+    };
+
     // Header with name
     addHeader(); // Initialize header
-
-    // Fixed contact info alignment
-    const contactInfo = [
-      {
-        text: cvData.contactInfo.email,
-        url: `mailto:${cvData.contactInfo.email}`,
-      },
-      {
-        text: 'linkedin.com/in/galkjones/',
-        url: 'https://www.linkedin.com/in/galkjones/',
-      },
-      {
-        text: 'github.com/GalKJ',
-        url: 'https://github.com/GalKJ/galjonesportfolio',
-      },
-      { text: cvData.contactInfo.location },
-    ];
-
-    doc.setFontSize(10);
-
-    // Calculate total width including separators
-    const separator = ' - ';
-    const separatorWidth = doc.getTextWidth(separator);
-    const totalWidth = contactInfo.reduce((acc, info, index) => {
-      const itemWidth = doc.getTextWidth(info.text);
-      // Add separator width for all items except the last
-      return (
-        acc + itemWidth + (index < contactInfo.length - 1 ? separatorWidth : 0)
-      );
-    }, 0);
-
-    // Start position for centered alignment
-    let currentX = (pageWidth - totalWidth) / 2;
-
-    // Render contact info with separators
-    contactInfo.forEach((info, index) => {
-      if (info.url) {
-        addLink(info.text, info.url, currentX, yOffset);
-      } else {
-        doc.text(info.text, currentX, yOffset);
-      }
-      currentX += doc.getTextWidth(info.text);
-
-      // Add separator after all items except the last
-      if (index < contactInfo.length - 1) {
-        doc.text(separator, currentX, yOffset);
-        currentX += separatorWidth;
-      }
-    });
-
-    addSpacing(10);
 
     // Profile Section
     doc.setFontSize(16);
