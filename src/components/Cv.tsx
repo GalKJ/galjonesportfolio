@@ -151,7 +151,7 @@ const CV: React.FC = () => {
 
     cvData.technicalSkills.forEach((skill) => {
       doc.setFontSize(12);
-      const skillText = `${skill.category}: ${skill.skills}`;
+      const skillText = `• ${skill.category}: ${skill.skills}`;
       const splitSkills = doc.splitTextToSize(
         skillText,
         pageWidth - margin * 2
@@ -167,14 +167,14 @@ const CV: React.FC = () => {
     addSpacing(9);
 
     cvData.education.forEach((edu) => {
-      doc.setFontSize(14);
-      doc.text(`${edu.degree}`, margin, yOffset);
+      doc.setFontSize(13);
+      doc.text(`• ${edu.degree}`, margin, yOffset);
       addSpacing(7);
 
       doc.setFontSize(12);
-      doc.text(`${edu.institution} - ${edu.period}`, margin, yOffset);
+      doc.text(`- ${edu.institution} - ${edu.period}`, margin + 5, yOffset);
       addSpacing(7);
-      doc.text(`${edu.achievement}`, margin + 5, yOffset);
+      doc.text(`- ${edu.achievement}`, margin + 5, yOffset);
       addSpacing(10);
     });
 
@@ -186,21 +186,21 @@ const CV: React.FC = () => {
 
       cvData.sideProjects.forEach((project) => {
         doc.setFontSize(14);
-        doc.text(project.title, margin, yOffset);
+        doc.text(` • ${project.title}`, margin, yOffset);
         addSpacing(7);
 
         doc.setFontSize(12);
         const descriptionLines = doc.splitTextToSize(
-          project.description,
+          `- ${project.description}`,
           pageWidth - margin * 2
         );
-        doc.text(descriptionLines, margin, yOffset);
-        addSpacing(descriptionLines.length * 7);
+        doc.text(descriptionLines, margin + 5, yOffset);
+        addSpacing(descriptionLines.length * 6);
 
         if (project.technologies) {
           doc.text(
-            `Technologies: ${project.technologies.join(', ')}`,
-            margin,
+            `- Technologies: ${project.technologies.join(', ')}`,
+            margin + 5,
             yOffset
           );
           addSpacing(10);
@@ -216,15 +216,15 @@ const CV: React.FC = () => {
 
       cvData.previousCareers.forEach((career) => {
         doc.setFontSize(14);
-        doc.text(career.role, margin, yOffset);
+        doc.text(` • ${career.role}`, margin, yOffset);
         addSpacing(7);
 
         doc.setFontSize(12);
         const descriptionLines = doc.splitTextToSize(
-          career.description,
+          ` - ${career.description}`,
           pageWidth - margin * 2
         );
-        doc.text(descriptionLines, margin, yOffset);
+        doc.text(descriptionLines, margin + 5, yOffset);
         addSpacing(descriptionLines.length * 7);
       });
     }
