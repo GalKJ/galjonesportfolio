@@ -58,7 +58,7 @@ const useGeneratePdf = () => {
         },
         {
           text: 'github.com/GalKJ',
-          url: 'https://github.com/GalKJ/galjonesportfolio',
+          url: 'https://github.com/GalKJ',
         },
         { text: cvData.contactInfo.location },
       ];
