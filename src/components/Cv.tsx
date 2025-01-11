@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { cvData } from '../data/cvData';
 
@@ -75,31 +77,37 @@ const CV: React.FC = () => {
         </h2>
 
         <div className="space-y-2">
-          <h3
-            className="text-lg font-bold dark:text-yellow"
-            data-testid="experience-title"
-          >
-            {cvData.experience.title}
-          </h3>
-          <h4
-            className="text-base italic dark:text-yellow"
-            data-testid="experience-company-period"
-          >
-            {cvData.experience.company} — {cvData.experience.period}
-          </h4>
+          {cvData.experience.map((exp, index) => (
+            <div key={index}>
+              <h3
+                className="text-lg font-bold dark:text-yellow"
+                data-testid="experience-title"
+              >
+                {exp.title} at {exp.company}
+              </h3>
+              <h4
+                className="text-base italic dark:text-yellow"
+                data-testid="experience-company-period"
+              >
+                {exp.period}
+              </h4>
 
-          <div className="space-y-4 mt-2">
-            {cvData.experience.responsibilities.map((resp, index) => (
-              <div key={index}>
-                <p className="font-bold mb-1 dark:text-yellow">{resp.title}</p>
-                <ul className="list-disc ml-8 dark:text-yellow">
-                  {resp.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>{item}</li>
-                  ))}
-                </ul>
+              <div className="space-y-4 mt-2">
+                {exp.responsibilities.map((resp, respIndex) => (
+                  <div key={respIndex}>
+                    <p className="font-bold mb-1 dark:text-yellow">
+                      {resp.title}
+                    </p>
+                    <ul className="list-disc ml-8 dark:text-yellow">
+                      {resp.items.map((item, itemIndex) => (
+                        <li key={itemIndex}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 

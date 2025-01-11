@@ -48,7 +48,7 @@ export interface CVData {
     boldText: string;
     afterBold: string;
   };
-  experience: Experience;
+  experience: Experience[]; // Changed from Experience to Experience[]
   technicalSkills: TechnicalSkill[];
   education: Education[];
   sideProjects: SideProject[];
@@ -68,49 +68,57 @@ export const cvData: CVData = {
       'Promoted to Junior Full-Stack App Developer at Citizen Ticket after successfully completing an 18-month Level 4 Software Development Apprenticeship with ',
     boldText: 'distinction-grade',
     afterBold:
-      '. As sole developer of the App Team I work from conception to deployment, maintain and test the Citizen Ticket mobile application that enables 10,000+ users to scan and sell tickets and manage and sell stock on/offline at their events. Experienced in React-Native, Node.js, MySQL, Redis, Redux, Git and AI tooling. Passionate about DevOps, Agile practices, testing, clean code, pair programming, research and building impactful products.',
+      '. As an App Team developer I work from feature conception to deployment and maintain and test the Citizen Ticket mobile application that enables 500,000+ users to scan and sell tickets and manage and sell stock on/offline at their events. Experienced in React-Native, Redux, Node.js, MySQL, Redis, React, Git and AI tooling. Passionate about DevOps, Agile practices, testing, clean code, pair programming, research, knowledge sharing, inclusivity and building impactful products.',
   },
-  experience: {
-    title: 'Junior Full-Stack App Developer - Apprentice Software Developer',
-    company: 'Citizen Ticket',
-    period: 'January 2022 - Present',
-    responsibilities: [
-      {
-        title: 'Develop and maintain Citizen Ticket Toolbox mobile app.',
-        items: ['React-Native', 'Redux', 'Redis'],
-      },
-      {
-        title: 'Build, maintain and optimise backend.',
-        items: ['Node.js', 'MySQL', 'Sales API'],
-      },
-      {
-        title: 'Client side app development and debugging.',
-        items: ['Android Studio', 'X-code', 'Hardware devices'],
-      },
-      {
-        title: 'Deliver contributions to the App and wider development team',
-        items: [
-          'Agile sprint planning',
-          'Code reviews',
-          'Pair programming',
-          'Led technical upskilling sessions',
-        ],
-      },
-      {
-        title: 'Notable production-level projects',
-        items: [
-          'Checkout refactor - worked with onsite event producers',
-          'EPOS feature - worked with platform and account mgmt teams',
-          'Offline client feature - worked with CTO',
-          'Edge server feature',
-        ],
-      },
-    ],
-  },
+  experience: [
+    {
+      title: 'Junior Full-Stack App Developer - Apprentice Software Developer',
+      company: 'Citizen Ticket',
+      period: 'January 2022 - Present',
+      responsibilities: [
+        {
+          title: 'Develop and maintain Citizen Ticket Toolbox mobile app.',
+          items: ['React-Native', 'Redux', 'Redis'],
+        },
+        {
+          title: 'Build, maintain and optimise backend.',
+          items: ['Node.js', 'MySQL', 'Sales API'],
+        },
+        {
+          title: 'Client side app development and debugging.',
+          items: ['Android Studio', 'X-code', 'Hardware devices'],
+        },
+        {
+          title:
+            'Integrate IDE AI extensions for effective development workflows.',
+          items: ['GitHub Copilot'],
+        },
+        {
+          title: 'Deliver contributions to the App and wider development team',
+          items: [
+            'Agile sprint planning',
+            'Code reviews',
+            'Pair programming',
+            'Led technical upskilling sessions',
+          ],
+        },
+        {
+          title: 'Notable production-level projects',
+          items: [
+            'Checkout refactor - worked with onsite event producers',
+            'EPOS feature - worked with platform and account management teams',
+            'Offline client feature - worked with CTO',
+            'Edge server feature - worked with CTO',
+          ],
+        },
+      ],
+    },
+    // Add more experience objects if needed
+  ],
   technicalSkills: [
     {
       category: 'Languages & Frameworks',
-      skills: 'JavaScript, React-Native, React, Node.js',
+      skills: 'JavaScript, TypeScript, React-Native, React, Node.js',
     },
     {
       category: 'Tools & Platforms',
@@ -139,7 +147,7 @@ export const cvData: CVData = {
       degree: 'Master of Arts in Acting',
       institution:
         'Rose Bruford College, Certified by the University of Manchester',
-      period: 'August 2003 - October 2004',
+      period: 'August 2003 - December 2004',
       achievement: 'Achieved Distinction Grade',
     },
     {
