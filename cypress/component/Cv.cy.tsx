@@ -24,18 +24,18 @@ describe('Cv Component', () => {
   it('displays professional experience section', () => {
     cy.get('[data-testid="experience-section"]').should('exist');
     cy.contains('Professional Experience').should('exist');
-    cy.contains(cvData.experience.title).should('exist');
     cy.contains(
-      `${cvData.experience.company} — ${cvData.experience.period}`
+      `${cvData.experience[0].title} at ${cvData.experience[0].company}`
     ).should('exist');
-    cy.contains(cvData.experience.responsibilities[0].title).should('exist');
+    cy.contains(cvData.experience[0].period).should('exist');
+    cy.contains(cvData.experience[0].responsibilities[0].title).should('exist');
     cy.get('[data-testid="experience-title"]').should(
       'contain',
-      cvData.experience.title
+      cvData.experience[0].title
     );
     cy.get('[data-testid="experience-company-period"]').should(
       'contain',
-      `${cvData.experience.company} — ${cvData.experience.period}`
+      cvData.experience[0].period
     );
   });
 
