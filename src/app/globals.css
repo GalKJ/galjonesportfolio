@@ -10,7 +10,7 @@
   --color-yellow: 253, 216, 112; /* #fdd870 */
   --color-orange: 208, 144, 47; /* #d0902f */
   --color-dark-orange: 161, 85, 1; /* #a15501 */
-  --color-dark-brown: 63, 19, 5, 1; /* #351409 */
+  --color-dark-brown: 63, 19, 5, 0.8; /* #351409 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +22,7 @@
     --color-yellow: 253, 216, 112; /* #fdd870 */
     --color-orange: 208, 144, 47; /* #d0902f */
     --color-dark-orange: 161, 85, 1; /* #a15501 */
-    --color-dark-brown: 63, 19, 5, 1; /* #351409 */
+    --color-dark-brown: 63, 19, 5, 0.8; /* #351409 */
   }
 }
 
