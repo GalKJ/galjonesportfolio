@@ -11,7 +11,7 @@ const CV: React.FC = () => {
         <div className="flex flex-col md:flex-row flex-wrap justify-center gap-2 text-sm">
           <a
             href={`mailto:${cvData.contactInfo.email}`}
-            className="underline text-blue-600 hover:text-blue-800"
+            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
           >
             {cvData.contactInfo.email}
           </a>
@@ -22,7 +22,7 @@ const CV: React.FC = () => {
             href={`https://www.${cvData.contactInfo.linkedin}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-blue-600 hover:text-blue-800"
+            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
           >
             {cvData.contactInfo.linkedin}
           </a>
@@ -33,7 +33,7 @@ const CV: React.FC = () => {
             href={`https://${cvData.contactInfo.github}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-blue-600 hover:text-blue-800"
+            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
           >
             {cvData.contactInfo.github}
           </a>
