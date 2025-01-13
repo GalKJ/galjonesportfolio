@@ -9,7 +9,7 @@ export default function PortfolioHeader() {
       {/* Download PDF Button */}
       <button
         onClick={generatePdf}
-        className="px-4 py-2 bg-gradient-to-r from-darkBrown to-yellow dark:text-lightYellow rounded w-40 hover:shadow-lg transition-all duration-1000 hover:brightness-110"
+        className="px-4 py-2 my-2 md:m-0 lg:m-0 bg-gradient-to-r from-darkBrown to-yellow dark:text-lightYellow rounded w-40 hover:shadow-lg transition-all duration-1000 hover:brightness-110"
       >
         Download PDF
       </button>
