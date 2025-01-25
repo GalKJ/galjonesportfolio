@@ -85,7 +85,7 @@ export const cvData: CVData = {
           items: ['Node.js', 'MySQL', 'Sales API'],
         },
         {
-          title: 'Client side app development and debugging.',
+          title: 'Client-side app development and debugging.',
           items: ['Android Studio', 'X-code', 'Hardware devices'],
         },
         {
@@ -107,7 +107,7 @@ export const cvData: CVData = {
           items: [
             'Checkout refactor - worked with onsite event producers',
             'EPOS feature - worked with platform and account management teams',
-            'Offline client feature - worked with CTO',
+            'Offline client-side feature - worked with CTO',
             'Edge server feature - worked with CTO',
           ],
         },
