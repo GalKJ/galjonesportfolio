@@ -77,20 +77,20 @@ export const cvData: CVData = {
       period: 'January 2022 - Present',
       responsibilities: [
         {
-          title: 'Develop and maintain Citizen Ticket Toolbox mobile app.',
+          title: 'Develop and maintain Citizen Ticket Toolbox mobile app',
           items: ['React-Native', 'Redux', 'Redis'],
         },
         {
-          title: 'Build, maintain and optimise backend.',
+          title: 'Build, maintain and optimise backend',
           items: ['Node.js', 'MySQL', 'Sales API'],
         },
         {
-          title: 'Client-side app development and debugging.',
+          title: 'Client-side app development and debugging',
           items: ['Android Studio', 'X-code', 'Hardware devices'],
         },
         {
           title:
-            'Integrate IDE AI extensions for effective development workflows.',
+            'Integrate IDE AI extensions for effective development workflows',
           items: ['GitHub Copilot'],
         },
         {
