@@ -212,7 +212,7 @@ const CV: React.FC = () => {
             className="text-lg font-bold dark:text-yellow"
             data-testid="previous-careers-header"
           >
-            Previous careers
+            Career History
           </h3>
           <ul className="list-disc ml-8 mt-2 dark:text-yellow">
             {cvData.previousCareers.map((career, index) => (
