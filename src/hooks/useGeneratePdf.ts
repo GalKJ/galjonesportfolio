@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { cvData } from '../data/cvData';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { url } from 'inspector';
 
 const useGeneratePdf = () => {
   const generatePdf = useCallback(() => {
@@ -59,6 +60,10 @@ const useGeneratePdf = () => {
         {
           text: 'github.com/GalKJ',
           url: 'https://github.com/GalKJ',
+        },
+        {
+          text: 'galkjones CV site',
+          url: 'https://galkjonesportfolio.vercel.app/',
         },
         { text: cvData.contactInfo.location },
       ];
