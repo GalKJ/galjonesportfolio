@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { cvData } from '../data/cvData';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { url } from 'inspector';
 
 const useGeneratePdf = () => {
   const generatePdf = useCallback(() => {
