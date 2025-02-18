@@ -60,6 +60,10 @@ const useGeneratePdf = () => {
           text: 'github.com/GalKJ',
           url: 'https://github.com/GalKJ',
         },
+        {
+          text: 'galkjones CV site',
+          url: 'https://galkjonesportfolio.vercel.app/',
+        },
         { text: cvData.contactInfo.location },
       ];
 
