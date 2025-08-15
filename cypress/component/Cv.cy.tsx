@@ -1,73 +1,51 @@
-import React from 'react';
-import Cv from '../../src/components/Cv';
-import { cvData } from '../../src/data/cvData';
+import React from "react";
+import Cv from "../../src/components/Cv";
 
-describe('Cv Component', () => {
+describe("Cv Component", () => {
   beforeEach(() => {
     cy.mount(<Cv />);
   });
 
-  it('displays contact info', () => {
-    cy.contains(cvData.contactInfo.email).should('exist');
-    cy.contains(cvData.contactInfo.linkedin).should('exist');
-    cy.contains(cvData.contactInfo.github).should('exist');
-    cy.contains(cvData.contactInfo.location).should('exist');
+  it("displays contact info", () => {
+    cy.contains("+44 7782 382384").should("exist");
+    cy.contains("galkjones@gmail.com").should("exist");
+    cy.contains("LinkedIn").should("exist");
+    cy.contains("GitHub").should("exist");
+    cy.contains("London, UK").should("exist");
   });
 
-  it('displays profile section', () => {
-    cy.get('[data-testid="profile-section"]').should('exist');
-    cy.contains('Profile').should('exist');
-    cy.contains('Promoted to Junior Full-Stack App Developer').should('exist');
-    cy.contains(cvData.profile.boldText).should('exist');
+  it("displays profile section", () => {
+    cy.get('[data-testid="profile-section"]').should("exist");
+    cy.contains("logical problem solver").should("exist");
   });
 
-  it('displays professional experience section', () => {
-    cy.get('[data-testid="experience-section"]').should('exist');
-    cy.contains('Professional Experience').should('exist');
-    cy.contains(
-      `${cvData.experience[0].title} at ${cvData.experience[0].company}`
-    ).should('exist');
-    cy.contains(cvData.experience[0].period).should('exist');
-    cy.contains(cvData.experience[0].responsibilities[0].title).should('exist');
-    cy.get('[data-testid="experience-title"]').should(
-      'contain',
-      cvData.experience[0].title
-    );
-    cy.get('[data-testid="experience-company-period"]').should(
-      'contain',
-      cvData.experience[0].period
-    );
+  it("displays professional experience section", () => {
+    cy.get('[data-testid="experience-section"]').should("exist");
+    cy.contains("Professional Experience").should("exist");
+    cy.contains("Junior Full-Stack App Developer").should("exist");
+    cy.contains("Citizen Ticket").should("exist");
+    cy.contains("Jan 2024 – Present").should("exist");
   });
 
-  it('displays technical skills section', () => {
-    cy.get('[data-testid="technical-skills-section"]').should('exist');
-    cy.contains('Technical Skills').should('exist');
-    cy.contains('Languages & Frameworks').should('exist');
-    cy.contains('Testing').should('exist');
-    cy.contains('AI & Automation').should('exist');
+  it("displays technical skills section", () => {
+    cy.get('[data-testid="skills-section"]').should("exist");
+    cy.contains("Technical Skills").should("exist");
+    cy.contains("Languages/Frameworks").should("exist");
+    cy.contains("Tools").should("exist");
+    cy.contains("Methodologies").should("exist");
+    cy.contains("JavaScript/TypeScript").should("exist");
+    cy.contains("React/React Native").should("exist");
   });
 
-  it('displays education section', () => {
-    cy.get('[data-testid="education-section"]').should('exist');
-    cy.contains('Education').should('exist');
-    cy.contains(cvData.education[0].degree).should('exist');
-    cy.contains(cvData.education[0].institution).should('exist');
-    cy.get('[data-testid="education-degree"]').should(
-      'contain',
-      cvData.education[0].degree
-    );
-    cy.get('[data-testid="education-institution-period"]').should(
-      'contain',
-      `${cvData.education[0].institution} - ${cvData.education[0].period}`
-    );
+  it("displays education section", () => {
+    cy.get('[data-testid="qualifications-section"]').should("exist");
+    cy.contains("Qualifications").should("exist");
+    cy.contains("Founders & Coders").should("exist");
   });
 
-  it('displays additional information', () => {
-    cy.get('[data-testid="additional-info-section"]').should('exist');
-    cy.contains('Additional Information').should('exist');
-    cy.contains('Side Projects').should('exist');
-    cy.contains('Previous careers').should('exist');
-    cy.get('[data-testid="side-projects-header"]').should('exist');
-    cy.get('[data-testid="previous-careers-header"]').should('exist');
+  it("displays additional information", () => {
+    cy.get('[data-testid="interests-section"]').should("exist");
+    cy.contains("Interests").should("exist");
+    cy.contains("Programming").should("exist");
   });
 });

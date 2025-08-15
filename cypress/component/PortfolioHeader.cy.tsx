@@ -1,14 +1,14 @@
-import React from 'react';
-import { mount } from 'cypress/react';
-import PortfolioHeader from '../../src/components/PortfolioHeader';
+import React from "react";
+import PortfolioHeader from "../../src/components/PortfolioHeader";
 
-describe('PortfolioHeader', () => {
+describe("PortfolioHeader", () => {
   beforeEach(() => {
     cy.mount(<PortfolioHeader />);
   });
 
-  it('renders the header with correct text', () => {
-    cy.get('h1').should('have.text', 'Gal K Jones');
-    cy.get('h2').should('have.text', 'Junior Full Stack Application Developer');
+  it("renders a download link to the static CV PDF", () => {
+    cy.contains("a", "Download CV")
+      .should("have.attr", "href", "/cv/Gal-K-Jones-CV-2025.pdf")
+      .and("have.attr", "download");
   });
 });
