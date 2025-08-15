@@ -1,230 +1,152 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { cvData } from '../data/cvData';
+import React from "react";
+import { cvV2 } from "@/data/cvV2";
 
 const CV: React.FC = () => {
   return (
-    <div className="w-full space-y-4 md:space-y-6 lg:space-y-8">
-      {/* Header */}
-      <header className="text-center space-y-2" data-testid="header">
-        <div className="flex flex-col md:flex-row flex-wrap justify-center gap-2 text-sm">
+    <div className="max-w-4xl mx-auto px-6 py-10 text-gray-800">
+      <header className="border-b pb-2 mb-3" data-testid="header">
+        <h1 className="text-4xl font-bold mb-2">{cvV2.name}</h1>
+        <p className="text-lg">
           <a
-            href={`mailto:${cvData.contactInfo.email}`}
-            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
+            href={`tel:${cvV2.contact.phone.replace(/\s+/g, "")}`}
+            className="text-blue-600 hover:underline"
           >
-            {cvData.contactInfo.email}
-          </a>
-
-          <span className="hidden md:inline dark:text-yellow">-</span>
-
+            {cvV2.contact.phone}
+          </a>{" "}
+          ·{" "}
           <a
-            href={`https://www.${cvData.contactInfo.linkedin}`}
+            href={`mailto:${cvV2.contact.email}`}
+            className="text-blue-600 hover:underline"
+          >
+            {cvV2.contact.email}
+          </a>{" "}
+          ·{" "}
+          <a
+            href={cvV2.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
+            className="text-blue-600 hover:underline"
           >
-            {cvData.contactInfo.linkedin}
-          </a>
-
-          <span className="hidden md:inline dark:text-yellow">-</span>
-
+            LinkedIn
+          </a>{" "}
+          ·{" "}
           <a
-            href={`https://${cvData.contactInfo.github}`}
+            href={cvV2.contact.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-[rgb(0,67,215)] hover:text-[rgb(32,127,249)] transition-all duration-1000"
+            className="text-blue-600 hover:underline"
           >
-            {cvData.contactInfo.github}
-          </a>
-
-          <span className="hidden md:inline dark:text-yellow">-</span>
-          <span className="dark:text-yellow">
-            {cvData.contactInfo.location}
-          </span>
-        </div>
+            GitHub
+          </a>{" "}
+          · {cvV2.contact.location}
+        </p>
       </header>
 
-      {/* Profile Section */}
-
-      <section className="px-3 md:px-2 lg:px-0.5" data-testid="profile-section">
-        <h2
-          className="text-xl font-bold mb-2 dark:text-lightYellow"
-          data-testid="profile-header"
-        >
-          Profile
-        </h2>
-        <p className="text-justify dark:text-yellow">
-          {cvData.profile.beforeBold}
-          <span className="font-bold dark:text-lightYellow">
-            {cvData.profile.boldText}
-          </span>
-          {cvData.profile.afterBold}
-        </p>
+      <section className="mb-8 border-b pb-4" data-testid="profile-section">
+        <p>{cvV2.profile}</p>
       </section>
 
-      {/* Professional Experience */}
-
-      <section
-        className="px-3 md:px-2 lg:px-0.5"
-        data-testid="experience-section"
-      >
-        <h2
-          className="text-xl font-bold mb-4 dark:text-lightYellow"
-          data-testid="experience-header"
-        >
-          Professional Experience
-        </h2>
-
-        <div className="space-y-2">
-          {cvData.experience.map((exp, index) => (
-            <div key={index}>
-              <h3
-                className="text-lg font-bold dark:text-yellow"
-                data-testid="experience-title"
-              >
-                {exp.title} at {exp.company}
-              </h3>
-              <h4
-                className="text-base italic dark:text-yellow"
-                data-testid="experience-company-period"
-              >
-                {exp.period}
-              </h4>
-
-              <div className="space-y-4 mt-2">
-                {exp.responsibilities.map((resp, respIndex) => (
-                  <div key={respIndex}>
-                    <p className="font-bold mb-1 dark:text-yellow">
-                      {resp.title}
-                    </p>
-                    <ul className="list-disc ml-8 dark:text-yellow">
-                      {resp.items.map((item, itemIndex) => (
-                        <li key={itemIndex}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Technical Skills */}
-
-      <section
-        className="px-3 md:px-2 lg:px-0.5"
-        data-testid="technical-skills-section"
-      >
-        <h2
-          className="text-xl font-bold mb-2 dark:text-lightYellow"
-          data-testid="technical-skills-header"
-        >
+      <section className="mb-8 border-b pb-6" data-testid="skills-section">
+        <h2 className="text-2xl font-semibold text-center pb-1 mb-4">
           Technical Skills
         </h2>
-        <ul className="space-y-1 dark:text-yellow">
-          {cvData.technicalSkills.map((skill, index) => (
-            <li key={index}>
-              <span className="font-bold dark:text-yellow">
-                {skill.category}:
-              </span>{' '}
-              {skill.skills}
-            </li>
-          ))}
-        </ul>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr>
+                <th className="px-3 py-2" scope="col">
+                  Languages/Frameworks
+                </th>
+                <th className="px-3 py-2" scope="col">
+                  Tools
+                </th>
+                <th className="px-3 py-2" scope="col">
+                  Methodologies
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <tr key={i} className="align-top">
+                  <td className="px-3 py-2">
+                    {cvV2.skillsTable.languagesFrameworks[i] ? (
+                      <ul className="list-disc list-inside">
+                        <li>{cvV2.skillsTable.languagesFrameworks[i]}</li>
+                      </ul>
+                    ) : null}
+                  </td>
+                  <td className="px-3 py-2">
+                    {cvV2.skillsTable.tools[i] ? (
+                      <ul className="list-disc list-inside">
+                        <li>{cvV2.skillsTable.tools[i]}</li>
+                      </ul>
+                    ) : null}
+                  </td>
+                  <td className="px-3 py-2">
+                    {cvV2.skillsTable.methodologies[i] ? (
+                      <ul className="list-disc list-inside">
+                        <li>{cvV2.skillsTable.methodologies[i]}</li>
+                      </ul>
+                    ) : null}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      {/* Education */}
+      <section className="mb-8 border-b pb-6" data-testid="experience-section">
+        <h2 className="text-2xl font-semibold text-center pb-1 mb-4">
+          Professional Experience
+        </h2>
+        {cvV2.experience.map((exp, i) => (
+          <div className="mb-6" key={`${exp.role}-${i}`}>
+            <h3 className="text-lg font-bold flex items-baseline justify-between gap-4">
+              <span>{exp.role}</span>
+              <span className="ml-4 text-right">{exp.company}</span>
+            </h3>
+            <p className="italic text-sm flex items-baseline justify-between">
+              <span>{exp.period}</span>
+              <span className="ml-4 text-right">{exp.location}</span>
+            </p>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              {exp.bullets.map((b, j) => (
+                <li key={j}>{b}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
 
       <section
-        className="px-3 md:px-2 lg:px-0.5"
-        data-testid="education-section"
+        className="mb-8 border-b pb-6"
+        data-testid="qualifications-section"
       >
-        <h2
-          className="text-xl font-bold mb-4 dark:text-lightYellow"
-          data-testid="education-header"
-        >
-          Education
+        <h2 className="text-2xl font-semibold text-center pb-1 mb-4">
+          Qualifications
         </h2>
-
-        <div className="space-y-6">
-          {cvData.education.map((edu, index) => (
-            <div key={index}>
-              <h3
-                className="text-lg font-bold dark:text-yellow"
-                data-testid="education-degree"
-              >
-                {edu.degree}
-              </h3>
-              <h4
-                className="text-base italic dark:text-yellow"
-                data-testid="education-institution-period"
-              >
-                {edu.institution} - {edu.period}
-              </h4>
-              <p className="font-bold mt-1 dark:text-yellow">
-                {edu.achievement}
-              </p>
+        <div className="space-y-4">
+          {cvV2.qualifications.map((q, i) => (
+            <div key={i} className="">
+              <div className="flex items-baseline justify-between">
+                <span className="font-medium">{q.title}</span>
+                <span className="ml-4 text-right">{q.year}</span>
+              </div>
+              <h3 className="font-normal">{q.institution}</h3>
+              {q.note ? <div>• {q.note}</div> : null}
             </div>
           ))}
         </div>
       </section>
 
-      {/* Additional Information */}
-
-      <section
-        className="px-3 md:px-2 lg:px-0.5"
-        data-testid="additional-info-section"
-      >
-        <h2
-          className="text-xl font-bold mb-4 dark:text-lightYellow"
-          data-testid="additional-info-header"
-        >
-          Additional Information
+      <section data-testid="interests-section">
+        <h2 className="text-2xl font-semibold text-center pb-1 mb-4">
+          Interests
         </h2>
-
-        {/* Side Projects */}
-        <div className="mb-6">
-          <h3
-            className="text-lg font-bold dark:text-yellow"
-            data-testid="side-projects-header"
-          >
-            Side Projects
-          </h3>
-          {cvData.sideProjects.map((project, index) => (
-            <div key={index} className="mt-2">
-              <p className="font-bold dark:text-yellow">
-                {project.title}: {project.description}
-              </p>
-              <ul className="list-disc ml-8 mt-1 dark:text-yellow">
-                {project.technologies.map((tech, techIndex) => (
-                  <li key={techIndex}>{tech}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Previous Careers */}
-        <div>
-          <h3
-            className="text-lg font-bold dark:text-yellow"
-            data-testid="previous-careers-header"
-          >
-            Career History
-          </h3>
-          <ul className="list-disc ml-8 mt-2 dark:text-yellow">
-            {cvData.previousCareers.map((career, index) => (
-              <li key={index}>
-                <span className="font-bold dark:text-yellow">
-                  {career.role}:
-                </span>{' '}
-                {career.description}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p>{cvV2.interests.join(", ")}.</p>
       </section>
     </div>
   );

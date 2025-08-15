@@ -1,7 +1,7 @@
-import React from 'react';
-import LlmInterface from '@/components/LlmInterface';
-import PortfolioHeader from '@/components/PortfolioHeader';
-import Cv from '@/components/Cv';
+import React from "react";
+import LlmInterface from "@/components/LlmInterface";
+import PortfolioHeader from "@/components/PortfolioHeader";
+import Cv from "@/components/Cv";
 
 export default function Home() {
   return (
