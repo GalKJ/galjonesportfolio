@@ -3,7 +3,7 @@ import React from "react";
 
 export default function PortfolioHeader() {
   return (
-    <div className="z-10 flex max-w-5xl w-full justify-between lg:flex flex-col">
+    <div className="sticky top-0 z-30 md:static bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 flex max-w-5xl w-full justify-between lg:flex flex-col">
       {/* Download CV Button */}
       <a
         href="/cv/Gal-K-Jones-CV-2025.pdf"

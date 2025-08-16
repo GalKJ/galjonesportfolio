@@ -121,11 +121,12 @@ export const cvV2: CVV2 = {
     },
   ],
   interests: [
-    "Programming",
+    "In my free time",
+    "I enjoy Programming",
     "Yoga",
     "CrossFit",
-    "puzzles",
-    "narrowboats",
-    "event production",
+    "solving puzzles",
+    "researching narrowboats",
+    "and producing events",
   ],
 };
