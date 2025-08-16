@@ -39,7 +39,7 @@ export const cvV2: CVV2 = {
     location: "London, UK",
   },
   profile:
-    "I pride myself on being a logical problem solver and collaborative professional focused on delivering scalable, maintainable, and robust products that provide customer value. I drive impactful solutions from feature conception to deployment and excel at adapting and innovating in fast-paced, high-pressure environments.",
+    "I am a collaborative professional focused on delivering clean, maintainable, and robust code that provides business value. I drive impactful solutions from feature conception to deployment and excel at adapting and innovating in fast-paced, high-pressure environments. Passionate about knowledge sharing, inclusivity and building products that enrich our lives.",
   skillsTable: {
     languagesFrameworks: [
       "JavaScript/TypeScript",
