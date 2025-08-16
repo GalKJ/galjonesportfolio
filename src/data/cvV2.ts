@@ -122,8 +122,8 @@ export const cvV2: CVV2 = {
   ],
   interests: [
     "In my free time",
-    "I enjoy Programming",
-    "Yoga",
+    "I enjoy programming",
+    "yoga",
     "CrossFit",
     "solving puzzles",
     "researching narrowboats",
