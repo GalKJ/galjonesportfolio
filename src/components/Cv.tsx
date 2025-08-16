@@ -33,14 +33,14 @@ const CV: React.FC = () => {
           >
             {cvV2.contact.phone}
           </a>
-          <span aria-hidden>·</span>
+          <span aria-hidden="true">·</span>
           <a
             href={`mailto:${cvV2.contact.email}`}
             className="text-blue-600 hover:underline"
           >
             {cvV2.contact.email}
           </a>
-          <span aria-hidden>·</span>
+          <span aria-hidden="true">·</span>
           <a
             href={cvV2.contact.linkedin}
             target="_blank"
@@ -49,7 +49,7 @@ const CV: React.FC = () => {
           >
             LinkedIn
           </a>
-          <span aria-hidden>·</span>
+          <span aria-hidden="true">·</span>
           <a
             href={cvV2.contact.github}
             target="_blank"
@@ -58,7 +58,7 @@ const CV: React.FC = () => {
           >
             GitHub
           </a>
-          <span aria-hidden>·</span>
+          <span aria-hidden="true">·</span>
           <span>{cvV2.contact.location}</span>
         </p>
       </header>
