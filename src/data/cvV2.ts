@@ -82,14 +82,14 @@ export const cvV2: CVV2 = {
     },
     {
       role: "Deputy Chief Electrician",
-      company: "Nimax",
+      company: "Garrick Theatre, Nimax",
       period: "Jan 2020 – Sept 2021",
       location: "London",
       bullets: [
-        "Managed electrical operations at the Garrick Theatre including rig maintenance and crew management.",
         "Diagnosed and fixed LED flood firmware bug during City of Angels, ensuring uninterrupted performance.",
         "Led fit-up for The Drifters Girl, meeting strict deadlines.",
         "Prevented show stop on Death Drop by repairing faulty cable under time pressure.",
+        "Mentored new operators, ensuring they could complete cue plots consistently, efficiently, and safely.",
       ],
     },
   ],
@@ -121,12 +121,11 @@ export const cvV2: CVV2 = {
     },
   ],
   interests: [
-    "In my free time",
-    "I enjoy programming",
+    "programming",
     "yoga",
     "CrossFit",
     "solving puzzles",
     "researching narrowboats",
-    "and producing events",
+    "producing events",
   ],
 };
