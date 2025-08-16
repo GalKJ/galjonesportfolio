@@ -210,7 +210,21 @@ const CV: React.FC = () => {
         <h2 className="text-2xl font-semibold text-center pb-1 mb-4">
           Interests
         </h2>
-        <p>{cvV2.interests.join(", ")}.</p>
+        <p>
+          {(() => {
+            const items = cvV2.interests;
+            if (!items || items.length === 0) return null;
+            if (items.length === 1)
+              return <>In my free time, I enjoy {items[0]}.</>;
+            const head = items.slice(0, -1).join(", ");
+            const tail = items[items.length - 1];
+            return (
+              <>
+                In my free time, I enjoy {head} and {tail}.
+              </>
+            );
+          })()}
+        </p>
       </section>
     </div>
   );
