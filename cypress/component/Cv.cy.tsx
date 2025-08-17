@@ -7,7 +7,6 @@ describe("Cv Component", () => {
   });
 
   it("displays contact info", () => {
-    cy.contains("+44 7782 382384").should("exist");
     cy.contains("galkjones@gmail.com").should("exist");
     cy.contains("LinkedIn").should("exist");
     cy.contains("GitHub").should("exist");
@@ -16,7 +15,7 @@ describe("Cv Component", () => {
 
   it("displays profile section", () => {
     cy.get('[data-testid="profile-section"]').should("exist");
-    cy.contains("logical problem solver").should("exist");
+    cy.contains("Former Deputy Chief LX").should("exist");
   });
 
   it("displays professional experience section", () => {
