@@ -5,11 +5,7 @@ import { cvV2 } from "@/data/cvV2";
 
 const CV: React.FC = () => {
   // Render helper to italicize specific show titles in experience bullets
-  const showTitles = new Set([
-    "City of Angels",
-    "The Drifters Girl",
-    "Death Drop",
-  ]);
+  const showTitles = new Set(["City of Angels", "The Miser", "Death Drop"]);
   const renderBullet = (text: string) => {
     const parts = text.split(/(City of Angels|The Miser|Death Drop)/g);
     return parts.map((part, idx) =>
@@ -27,13 +23,6 @@ const CV: React.FC = () => {
           {cvV2.name}
         </h1>
         <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-3 gap-y-1">
-          <a
-            href={`tel:${cvV2.contact.phone.replace(/\s+/g, "")}`}
-            className="text-blue-600 hover:underline"
-          >
-            {cvV2.contact.phone}
-          </a>
-          <span aria-hidden="true">·</span>
           <a
             href={`mailto:${cvV2.contact.email}`}
             className="text-blue-600 hover:underline"
