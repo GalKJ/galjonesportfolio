@@ -1,7 +1,6 @@
 export interface CVV2 {
   name: string;
   contact: {
-    phone: string; // E.164 or display format
     email: string;
     linkedin: string; // full URL
     github: string; // full URL
@@ -32,7 +31,6 @@ export interface CVV2 {
 export const cvV2: CVV2 = {
   name: "Gal K Jones",
   contact: {
-    phone: "+44 7782 382384",
     email: "galkjones@gmail.com",
     linkedin: "https://linkedin.com/in/galkjones",
     github: "https://github.com/GalKJ",
