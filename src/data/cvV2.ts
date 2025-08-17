@@ -39,7 +39,7 @@ export const cvV2: CVV2 = {
     location: "London, UK",
   },
   profile:
-    "I am a collaborative professional focused on delivering clean, maintainable, and robust code that provides business value. I drive impactful solutions from feature conception to deployment and excel at adapting and innovating in fast-paced, high-pressure environments. Passionate about knowledge sharing, inclusivity and building products that enrich our lives.",
+    "Former Deputy Chief LX in the West End, now a Distinction-grade Junior Software Developer. Detail-oriented, collaborative, and driven to deliver value through clean code, iteration, and regular deployment. Experienced in leading technical teams, liaising with stakeholders, and operating under pressure to meet strict deadlines. Passionate about knowledge sharing, accessibility, inclusivity, and building products that enrich lives.",
   skillsTable: {
     languagesFrameworks: [
       "JavaScript/TypeScript",
@@ -86,9 +86,9 @@ export const cvV2: CVV2 = {
       period: "Jan 2020 – Sept 2021",
       location: "London",
       bullets: [
-        "Diagnosed and fixed LED flood firmware bug during City of Angels, ensuring uninterrupted performance.",
-        "Led fit-up for The Drifters Girl, meeting strict deadlines.",
-        "Prevented show stop on Death Drop by repairing faulty cable under time pressure.",
+        "Diagnosed and remedied an ETC desk cache bug during The Miser, ensuring a clean show report.",
+        "Led LX fit-up team for City of Angels, a multi departmental and highly technical show.",
+        "Prevented Death Drop going up late by identifying and repairing faulty cable during pre-set.",
         "Mentored new operators, ensuring they could complete cue plots consistently, efficiently, and safely.",
       ],
     },
@@ -124,8 +124,8 @@ export const cvV2: CVV2 = {
     "programming",
     "yoga",
     "CrossFit",
+    "cycling",
     "solving puzzles",
     "researching narrowboats",
-    "producing events",
   ],
 };
