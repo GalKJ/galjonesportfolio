@@ -11,7 +11,7 @@ const CV: React.FC = () => {
     "Death Drop",
   ]);
   const renderBullet = (text: string) => {
-    const parts = text.split(/(City of Angels|The Drifters Girl|Death Drop)/g);
+    const parts = text.split(/(City of Angels|The Miser|Death Drop)/g);
     return parts.map((part, idx) =>
       showTitles.has(part) ? (
         <em key={idx}>{part}</em>
